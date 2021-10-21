@@ -1,0 +1,642 @@
+// fixed text
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+  background: #21222a;
+  width: 100%;
+  z-index: 100;
+  &__text {
+    color: $color-primary-white;
+    text-align: center;
+    padding: 1rem 0 1.3rem 0;
+    font-size: 1.6rem;
+  }
+}
+
+// header
+
+.header {
+  &__hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    height: 8rem;
+    cursor: pointer;
+    align-self: center;
+    @include mq(1200px) {
+      display: none;
+    }
+  }
+
+  &__hamburger-button {
+    width: 4rem;
+    height: 0.4rem;
+    background: $color-primary-white;
+    border-radius: 0.5rem;
+    background-color: $color-primary-white;
+    transition: $main-transition 0.1s;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 4rem;
+      height: 0.4rem;
+      background: $color-primary-white;
+      border-radius: 0.5rem;
+    }
+    &::before {
+      transition: all 0.1s linear 0.35s;
+      transform: translateY(-1rem);
+    }
+    &::after {
+      transition: $main-transition 0.1s;
+      transform: translateY(1rem);
+    }
+  }
+  &__hamburger-menu.open .header__hamburger-button::before {
+    transition: $main-transition;
+    transform: translateY(1rem);
+    background: transparent;
+  }
+  &__hamburger-menu.open .header__hamburger-button {
+    transform: rotate(-45deg);
+  }
+  &__hamburger-menu.open .header__hamburger-button::after {
+    transform: rotate(-90deg);
+  }
+  &__navigation-mobile {
+    background: $color-primary-white;
+    height: 100vh;
+    width: 70vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 2rem;
+    transform: translateX(-100%);
+    transition: $main-transition;
+    &.show {
+      transform: translateX(0);
+    }
+    @include mq(1200px) {
+      display: flex;
+      transform: none;
+      flex-direction: row;
+      width: auto;
+      background: none;
+      height: auto;
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    padding-top: 3.5rem;
+    & li:last-child {
+      border-bottom: 1px solid $color-light-green;
+      padding-bottom: 2rem;
+      @include mq(1200px) {
+        border-bottom: none;
+      }
+    }
+    @include mq(1200px) {
+      display: flex;
+      flex-direction: row;
+      padding-top: 0;
+    }
+  }
+  &__navigation-list {
+    padding: 1rem;
+  }
+  &__navigation-item {
+    color: $color-light-green;
+    display: inline-block;
+    padding-left: 1rem;
+    @include mq(1200px) {
+      color: $color-primary-white;
+    }
+  }
+  &__navigation-sign-in {
+    padding: 3rem 2rem 1rem 2rem;
+    display: inline-block;
+  }
+  &__navigation-sign-in-button {
+    color: $color-buttons;
+  }
+  &__navigation-account {
+    padding: 1.3rem;
+  }
+  &__navigation-account-button {
+    background: #89b9c3;
+    color: #13202c;
+    padding: 1.8rem 2.5rem;
+    border-radius: $border-radius-main;
+    display: inline-block;
+    text-align: center;
+  }
+  &__buttons {
+    @include mq(1200px) {
+      display: none;
+    }
+  }
+  &__buttons-desktop {
+    display: none;
+    @include mq(1200px) {
+      display: flex;
+      font-size: 2rem;
+    }
+  }
+  &__navigation-sign-in-desktop {
+    padding: 3rem 0 2rem 0;
+    display: inline-block;
+    order: 2;
+  }
+  &__navigation-sign-in-button-desktop {
+    color: $color-primary-white;
+  }
+  &__navigation-account-desktop {
+    padding: 1.3rem 1rem;
+  }
+  &__navigation-account-button-desktop {
+    @extend .header__navigation-account-button;
+  }
+}
+
+// main section
+
+.main {
+  &__background-image-container {
+    display: none;
+
+    @include mq(1024px) {
+      position: absolute;
+      display: block;
+      top: auto;
+      bottom: -200px;
+      right: -652px;
+      z-index: -10;
+    }
+    @include mq(1200px) {
+      bottom: -195px;
+      right: -612px;
+    }
+    @include mq(1500px) {
+      bottom: 64px;
+      right: -573px;
+    }
+    @include mq(1600px) {
+      bottom: 64px;
+      right: -449px;
+    }
+    @include mq(1700px) {
+      bottom: -2px;
+      right: -444px;
+    }
+  }
+  &__background-image {
+    height: auto;
+    max-width: 100%;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+    @include mq(1024px) {
+      flex-basis: 38%;
+      align-items: flex-start;
+      padding-left: 4rem;
+    }
+
+    @include mq(1350px) {
+      flex-basis: 50%;
+    }
+    @include mq(1500px) {
+      padding-left: 0;
+    }
+  }
+  &__heading {
+    font-size: 3.3rem;
+    color: $color-primary-white;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    @include mq(400px) {
+      font-size: 4.5rem;
+      line-height: 4rem;
+    }
+    @include mq(700px) {
+      font-size: 5.5rem;
+    }
+    @include mq(1024px) {
+      font-size: 7rem;
+      margin-bottom: 2rem;
+      text-align: start;
+      line-height: 7rem;
+    }
+  }
+  &__intro-text {
+    color: $color-primary-white;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+    @include mq(1024px) {
+      font-size: 3rem;
+      text-align: start;
+    }
+  }
+  &__link-word {
+    display: inline-block;
+    color: $color-primary-white;
+    background: turquoise;
+    padding: 2rem 4rem;
+    font-size: 1.8rem;
+    border-radius: $border-radius-main;
+    font-weight: $font-weight-bold;
+    @include mq(600px) {
+      font-size: 2rem;
+      padding: 2.5rem 5rem;
+      border-radius: $border-radius-main + 0.5rem;
+    }
+    @include mq(990px) {
+      margin: 2rem 0 2.5rem 0;
+    }
+  }
+  &__form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include mq(1024px) {
+      align-self: baseline;
+      padding-right: 4rem;
+    }
+  }
+  &__sign-in-text {
+    color: $color-primary-white;
+    font-size: 2.4rem;
+    margin-bottom: 1.9rem;
+    @include mq(600px) {
+      font-size: 3rem;
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 29rem;
+    @include mq(400px) {
+      width: 36rem;
+    }
+    @include mq(500px) {
+      width: 38rem;
+    }
+    @include mq(600px) {
+      width: 45rem;
+    }
+  }
+  &__input {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 2.3rem 0 2.3rem 2.7rem;
+
+    border-radius: 1rem;
+    border: none;
+    background: #86c0c3;
+    &::placeholder {
+      color: #13202c;
+      font-size: 2rem;
+    }
+    @include mq(500px) {
+      padding: 2.6rem 0 2.6rem 2.7rem;
+    }
+    @include mq(1024px) {
+      margin-bottom: 2.5rem;
+    }
+  }
+  &__submit-button {
+    width: 100%;
+    color: $color-primary-white;
+    background: $color-buttons;
+    padding: 1.5rem 0;
+    font-size: 2rem;
+    font-weight: $font-weight-bold;
+    border-radius: 1rem;
+    border: none;
+    transition: $main-transition;
+    margin-bottom: 5rem;
+    cursor: pointer;
+    @include mq(500px) {
+      padding: 2rem 0;
+    }
+    &:hover {
+      background: $color-primary-white;
+      color: $color-buttons;
+    }
+  }
+  &__svg-wrapper {
+    background: $color-buttons;
+    width: 7rem;
+    border-radius: 50%;
+    margin: 3rem;
+    padding: 1rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: -60px;
+    cursor: pointer;
+    overflow: visible;
+  }
+}
+
+// steps
+
+.steps {
+  &__terms {
+    font-size: 1.7rem;
+    display: none;
+    @include mq(770px) {
+      display: block;
+    }
+    @include mq(1200px) {
+      flex-basis: 50%;
+      text-align: center;
+    }
+    @include mq(1350px) {
+      align-self: baseline;
+    }
+  }
+  &__heading {
+    font-size: 4.5rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: 4rem;
+    align-self: flex-start;
+  }
+  &__section-container {
+    display: flex;
+    margin-bottom: 4rem;
+  }
+  &__image {
+    padding-right: 3rem;
+    height: 5.5rem;
+  }
+  &__description-wrapper {
+    font-size: 2rem;
+  }
+  &__description-wrapper-heading {
+    color: $color-light-green;
+    padding-bottom: 2rem;
+  }
+  &__section-wrapper {
+    @include mq(1200px) {
+      flex-basis: 50%;
+      text-align: left;
+    }
+  }
+}
+
+// crossword puzzle maker
+
+.crossword {
+  &__image-container {
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 4rem;
+    max-width: 32rem;
+    @include mq(990px) {
+      order: 1;
+      max-width: 50rem;
+      padding-left: 2rem;
+    }
+    @include mq(1300px) {
+      max-width: 61rem;
+    }
+  }
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+  &__main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-basis: 50%;
+    @include mq(990px) {
+      text-align: left;
+      align-items: flex-start;
+    }
+    @include mq(1300px) {
+      padding-right: 8rem;
+    }
+    @include mq(1400px) {
+      padding-right: 17rem;
+    }
+    @include mq(1600px) {
+      padding-right: 12rem;
+    }
+  }
+  &__main-heading {
+    font-size: 3rem;
+    line-height: 2.7rem;
+    margin-bottom: 4rem;
+    @include mq(700px) {
+      font-size: 4rem;
+    }
+    @include mq(990px) {
+      font-size: 4.5rem;
+    }
+    @include mq(1025px) {
+      line-height: 4.7rem;
+    }
+  }
+  &__seconary-heading {
+    font-size: 2.4rem;
+    color: $color-light-green;
+    font-weight: $font-weight-bold;
+    margin-bottom: 2rem;
+  }
+  &__paragraph {
+    font-size: 1.9rem;
+    margin-bottom: 3.5rem;
+    text-align: center;
+
+    &:nth-of-type(2) {
+      margin-bottom: 6rem;
+    }
+    @include mq(990px) {
+      text-align: left;
+    }
+  }
+}
+
+// word search maker
+
+.word-search-maker {
+  &__image-container {
+    @extend .crossword__image-container;
+    @include mq(990px) {
+      order: -1;
+    }
+  }
+  &__image {
+    @extend .crossword__image;
+    @include mq(990px) {
+      margin-right: 6rem;
+    }
+    @include mq(1300px) {
+      margin-right: 8rem;
+    }
+    @include mq(1400px) {
+      margin-right: 17rem;
+    }
+  }
+  &__main-container {
+    @extend .crossword__main-container;
+    @include mq(990px) {
+      padding-left: 6rem;
+    }
+    @include mq(1300px) {
+      padding-left: 8rem;
+    }
+    @include mq(1400px) {
+      padding-left: 17rem;
+    }
+    padding-right: 0;
+  }
+  &__main-heading {
+    @extend .crossword__seconary-heading;
+  }
+  &__paragraph {
+    @extend .crossword__paragraph;
+  }
+}
+
+// letters
+
+.letters {
+  &__main-heading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $color-primary-white;
+    text-align: center;
+    @include mq(1200px) {
+      text-align: left;
+      flex-basis: 50%;
+    }
+  }
+  &__heading {
+    font-size: 2.5rem;
+    margin-bottom: 2.3rem;
+    @include mq(400px) {
+      font-size: 3.2rem;
+    }
+    @include mq(1300px) {
+      font-size: 5rem;
+    }
+  }
+  &__paragraph {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+    font-weight: $font-weight-bold;
+    @include mq(1300px) {
+      font-size: 2.2rem;
+    }
+  }
+  &__letter-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 60rem;
+    @include mq(1200px) {
+      flex-basis: 50%;
+      padding-left: 2rem;
+      align-self: baseline;
+    }
+  }
+  &__letter {
+    background: #8794a7;
+    padding: 0.5rem 0.7rem;
+    margin: 0.3rem;
+    color: $color-buttons;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    flex-basis: 4rem;
+    text-align: center;
+    font-weight: $font-weight-bold;
+    @include mq(1300px) {
+      flex-basis: 5rem;
+      padding: 1rem 0.7rem;
+      border-radius: 0.8rem;
+      margin: 0.5rem;
+    }
+  }
+}
+
+// footer
+
+.footer {
+  &__logo-wrapper {
+    margin-bottom: 3rem;
+    text-align: center;
+    color: $color-footer;
+    @include mq(460px) {
+      flex-basis: 50%;
+    }
+    @include mq(990px) {
+      flex-basis: 25%;
+    }
+  }
+  &__logo {
+    margin-bottom: 2rem;
+    @include mq(1025px) {
+      margin-bottom: 3rem;
+    }
+  }
+  &__paragraphs {
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+  }
+  &__heading {
+    margin-bottom: 1.5rem;
+    font-size: 1.7rem;
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 1.7rem;
+    &:last-child {
+      margin-bottom: 5rem;
+    }
+  }
+  &__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include mq(460px) {
+      flex-basis: 50%;
+    }
+    @include mq(990px) {
+      flex-basis: 25%;
+    }
+  }
+  &__item {
+    margin-bottom: 0.8rem;
+    font-size: 1.8rem;
+    @include mq(650px) {
+      margin-bottom: 2rem;
+    }
+  }
+  &__link {
+    color: $color-footer;
+  }
+}

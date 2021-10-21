@@ -1,0 +1,137 @@
+// header
+
+.header {
+  padding: 4rem 1rem;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+
+  .container {
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 2rem;
+  }
+}
+
+// main
+
+.main {
+  text-align: center;
+  background-image: linear-gradient(to top right, #13ad91, #06467a);
+  position: relative;
+  padding: 13rem 0 5rem 0;
+  display: flex;
+  align-items: center;
+
+  @include mq(1024px) {
+    background: #0e294e;
+    z-index: 2;
+    padding: 20rem 0 12rem 0;
+    .container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  @include mq(1200px) {
+    height: 100vh;
+  }
+  @include mq(1350px) {
+    .container {
+      padding-top: 5rem;
+      // }
+    }
+  }
+  @include mq(1500px) {
+    .container {
+      padding: 5rem 0;
+    }
+  }
+}
+
+// steps
+
+.steps {
+  padding: 9rem 4rem;
+  background-color: #fdfdfd;
+  box-shadow: 0px 0px 35px 4px inset rgb(183 183 183 / 30%);
+  @include mq(640px) {
+    .container {
+      padding: 0 4rem;
+    }
+  }
+  @include mq(770px) {
+    .container {
+      padding: 0 9rem;
+    }
+  }
+  @include mq(1200px) {
+    .container {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 7rem 0;
+    }
+  }
+}
+
+//crossword-puzzle-maker
+
+.crossword {
+  @extend .word-search-maker;
+  background: #fefefe;
+  border-bottom: 1px solid #e6e9ed;
+  .container {
+    @include mq(990px) {
+      flex-direction: row;
+      padding: 0 7rem;
+    }
+  }
+}
+
+// word search maker
+
+.word-search-maker {
+  background: $color-primary-white;
+  padding: 8rem 0;
+  .container {
+    @include mq(990px) {
+      flex-direction: row;
+      padding: 0 7rem;
+    }
+  }
+}
+// letters
+
+.letters {
+  background: url("../images/alphabet-background.png") center/cover no-repeat;
+  padding: 8rem 0;
+  .container {
+    max-width: 80rem;
+    @include mq(1200px) {
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: 139rem;
+      padding: 0 6rem;
+    }
+  }
+  @include mq(1200px) {
+    padding: 12rem 0;
+  }
+}
+
+// footer
+
+.footer {
+  padding-top: 5rem;
+  @include mq(460px) {
+    .container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+  // @include mq(1000px) {
+  //   padding: 7rem 0 3rem 0;
+  // }
+}

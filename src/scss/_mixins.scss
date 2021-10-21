@@ -1,0 +1,6 @@
+// mixin for media query
+@mixin mq($arg) {
+  @media screen and (min-width: $arg) {
+    @content;
+  }
+}

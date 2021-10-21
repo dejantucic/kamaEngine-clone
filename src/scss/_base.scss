@@ -1,0 +1,33 @@
+@import url("http://fonts.cdnfonts.com/css/sf-pro-display");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "SF Pro Display", sans-serif;
+  line-height: 1.2;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  max-width: 139rem;
+  margin: 0 auto;
+  padding: 0 2.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+// class for stopping transormation on browser resizing
+.resize-transition-stopper * {
+  transition: none !important;
+}
