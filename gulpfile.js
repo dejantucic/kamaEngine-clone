@@ -11,6 +11,16 @@ import terser from "gulp-terser";
 import imagemin, { mozjpeg, optipng, svgo } from "gulp-imagemin";
 import imagewebp from "gulp-webp";
 
+const paths = {
+  html: {
+    src: "src/*.html",
+    dest: "dist",
+  },
+};
+
+function copyHtml() {
+  return src(paths.html.src).pipe(dest(paths.html.dest));
+}
 //compile, prefix, and min scss
 function compilescss() {
   return src("src/scss/*.scss")
@@ -56,10 +66,18 @@ function watchTask() {
   watch("src/js/*.js", jsmin);
   watch("src/images/*", optimizeimg);
   watch("dist/images/*.{jpg,png}", webpImage);
+  watch(paths.html.src, copyHtml);
 }
 
 // Default Gulp task
-const _default = series(compilescss, optimizeimg, jsmin, webpImage, watchTask);
-const _build = series(compilescss, optimizeimg, jsmin, webpImage);
+const _default = series(
+  compilescss,
+  optimizeimg,
+  jsmin,
+  webpImage,
+  copyHtml,
+  watchTask
+);
+const _build = series(compilescss, optimizeimg, jsmin, webpImage, copyHtml);
 export { _default as default };
 export { _build as build };
