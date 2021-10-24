@@ -60,4 +60,6 @@ function watchTask() {
 
 // Default Gulp task
 const _default = series(compilescss, optimizeimg, jsmin, webpImage, watchTask);
+const _build = series(compilescss, optimizeimg, jsmin, webpImage);
 export { _default as default };
+export { _build as build };
